@@ -18,7 +18,10 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
-    ];
+	\Illuminate\Auth\Events\Verified::class => [
+		\App\Listeners\EmailVerified::class,
+	],
+];
 
     /**
      * Register any events for your application.
@@ -27,8 +30,8 @@ class EventServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        parent::boot();
+	    parent::boot();
 
-        //
+	    //
     }
 }
